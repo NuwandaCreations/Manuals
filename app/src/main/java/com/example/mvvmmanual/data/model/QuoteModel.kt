@@ -1,8 +1,10 @@
 package com.example.mvvmmanual.data.model
 
+import com.google.gson.annotations.SerializedName
+
 //En el model tendremos la parte de datos, cuando recuperamos de una base de datos o de un servicio
-// web, o como en este caso, creando nuestro propio modelo de datos con un provider.
+// web, en este caso un servicio web de una API.
 data class QuoteModel(
-    val quote: String,
-    val author: String
+    @SerializedName("quote") val quote: String,
+    @SerializedName("author")val author: String
 )
