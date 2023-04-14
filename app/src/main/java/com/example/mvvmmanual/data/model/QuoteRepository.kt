@@ -12,4 +12,6 @@ class QuoteRepository {
         QuoteProvider.quotes = response
         return response
     }
+
+    fun getRandomQuote () : QuoteModel = QuoteProvider.randomQuote()
 }
