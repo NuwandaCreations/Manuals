@@ -1,5 +1,6 @@
 package com.example.mvvmmanual.data.model.network
 
+import android.util.Log
 import com.example.mvvmmanual.core.RetrofitHelper
 import com.example.mvvmmanual.data.model.QuoteModel
 import kotlinx.coroutines.Dispatchers

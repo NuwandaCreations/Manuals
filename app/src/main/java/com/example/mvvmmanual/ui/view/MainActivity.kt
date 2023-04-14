@@ -26,13 +26,15 @@ class MainActivity : AppCompatActivity() {
             binding.tvAuthor.text = it.author
         })
 
+        quoteViewModel.onCreate()
+
         /*Aquí es cuando la parte view notifica al liveData que ha habido un cambio en la UI, que se
         ponga en contacto con el modelo, realicen las modificaciones pertinentes y generen un
         cambio en el liveData para que mi variable anterior (quoteViewModel) pueda observar el
         cambio y actuar en consecuencia. IMPORTANTE: se llama desde mi propia variable de la
-        activity*/
+        activity
         binding.activityListener.setOnClickListener {
             quoteViewModel.randomQuote()
-        }
+        }*/
     }
 }
