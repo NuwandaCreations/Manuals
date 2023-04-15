@@ -9,8 +9,8 @@ import com.example.mvvmmanual.databinding.ActivityMainBinding
 import com.example.mvvmmanual.ui.viewModel.QuoteViewModel
 
 class MainActivity : AppCompatActivity() {
-    //El view es la parte de la UI, los XML, las activities y los fragments. Estos actuarán como siempre,
-    // al pulsar un botón se suscribirán al view model y este les dirá cuando y como pintar.
+    /*El view es la parte de la UI, los XML, las activities y los fragments. Estos actuarán como siempre,
+    al pulsar un botón se suscribirán al view model y este les dirá cuando y como pintar.*/
     private lateinit var binding: ActivityMainBinding
     private val quoteViewModel: QuoteViewModel by viewModels()
 
@@ -22,14 +22,14 @@ class MainActivity : AppCompatActivity() {
         /*Con la variable quoteViewModel engancho el quoteLiveData a esta variable que observará
         (función observe) cualquier cambio que se produzca en el liveData y actuará según lo que
         estipule en la función Observer*/
-        quoteViewModel.quoteLiveData.observe(this, Observer {
+        quoteViewModel.quoteLiveData.observe(this) {
             binding.tvQuote.text = it.quote
             binding.tvAuthor.text = it.author
-        })
+        }
 
-        quoteViewModel.progressLiveData.observe(this, Observer {
+        quoteViewModel.progressLiveData.observe(this) {
             binding.progressMain.isVisible = it
-        })
+        }
 
         quoteViewModel.onCreate()
 

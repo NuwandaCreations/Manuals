@@ -9,6 +9,7 @@ class QuoteRepository {
 
     suspend fun getAllQuotes():List<QuoteModel>{
         val response = api.getQuotes()
+        //Guardamos las quotes en el provider (nuestra database)
         QuoteProvider.quotes = response
         return response
     }

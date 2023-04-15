@@ -9,8 +9,10 @@ import com.example.mvvmmanual.domain.GetQuotesUseCase
 import com.example.mvvmmanual.domain.GetRandomQuoteUseCase
 import kotlinx.coroutines.launch
 
-//El viewModel es la conexión entre el modelo y la vista. Las vistas se suscriben a sus respectivos
-// viewModels y estos al percatarse de que el modelo ha sido modificado lo notificarán a la vista.
+/*El viewModel es la conexión entre el modelo y la vista. Las vistas se suscriben a sus respectivos
+viewModels y estos al percatarse de que el modelo ha sido modificado lo notificarán a la vista. Los
+viewModels llaman a determinados casos de uso para cada función (En este proyecto, los casos de uso
+a su vez notifican al repository que eligirá si hacer llamada a network o database).*/
 class QuoteViewModel :ViewModel() {
     val quoteLiveData = MutableLiveData<QuoteModel>()
     val progressLiveData = MutableLiveData<Boolean>()
@@ -27,8 +29,9 @@ class QuoteViewModel :ViewModel() {
             progressLiveData.postValue(true)
 
             if (!result.isNullOrEmpty()){
-                //Posteamos el valor en el liveData para que el observer del view lo vea y cambie.
-                quoteLiveData.postValue(result[(0..9).random()])
+                /*Posteamos el valor en el liveData para que el observer del view lo vea y cambie la
+                vista.*/
+                quoteLiveData.postValue(result[result.indices.random()])
                 progressLiveData.postValue(false)
             }
         }
