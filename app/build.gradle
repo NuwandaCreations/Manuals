@@ -59,10 +59,10 @@ dependencies {
     //Corrutinas
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     //Room
-    implementation "androidx.room:room-runtime:2.5.1"
+    //implementation "androidx.room:room-runtime:2.5.1"
     implementation "androidx.room:room-ktx:2.5.1"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    annotationProcessor "androidx.room:room-compiler:2.5.1"
+    //implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //annotationProcessor "androidx.room:room-compiler:2.5.1"
     kapt "androidx.room:room-compiler:2.5.1"
     //koin
     //implementation "io.insert-koin:koin-core:3.4.0"

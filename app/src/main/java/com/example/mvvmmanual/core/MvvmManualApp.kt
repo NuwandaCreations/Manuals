@@ -1,4 +1,4 @@
-package com.example.mvvmmanual
+package com.example.mvvmmanual.core
 
 import android.app.Application
 import com.example.mvvmmanual.core.di.appModule
