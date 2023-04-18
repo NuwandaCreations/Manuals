@@ -3,10 +3,9 @@ package com.example.mvvmmanual.ui.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mvvmmanual.data.model.QuoteModel
-import com.example.mvvmmanual.data.model.database.QuoteProvider
 import com.example.mvvmmanual.domain.GetQuotesUseCase
 import com.example.mvvmmanual.domain.GetRandomQuoteUseCase
+import com.example.mvvmmanual.domain.model.Quote
 import kotlinx.coroutines.launch
 
 /*El viewModel es la conexión entre el modelo y la vista. Las vistas se suscriben a sus respectivos
@@ -17,7 +16,7 @@ class QuoteViewModel(
     private val getQuotesUseCase: GetQuotesUseCase,
     private val getRandomQuoteUseCase: GetRandomQuoteUseCase
 ) : ViewModel() {
-    val quoteLiveData = MutableLiveData<QuoteModel>()
+    val quoteLiveData = MutableLiveData<Quote>()
     val progressLiveData = MutableLiveData<Boolean>()
 
 
@@ -39,10 +38,13 @@ class QuoteViewModel(
     }
 
     fun randomQuote() {
-        progressLiveData.postValue(true)
-        val result = getRandomQuoteUseCase()
+        viewModelScope.launch {
+            progressLiveData.postValue(true)
+            val result = getRandomQuoteUseCase()
 
-        quoteLiveData.postValue(result)
-        progressLiveData.postValue(false)
+            quoteLiveData.postValue(result[result.indices.random()])
+            progressLiveData.postValue(false)
+        }
+
     }
 }

@@ -12,4 +12,7 @@ interface QuoteDao {
 
     @Query("SELECT * FROM quote_table ORDER BY author DESC")
     suspend fun getAllQuotes():List<QuoteEntity>
+
+    @Query("DELETE FROM quote_table")
+    suspend fun deleteAllQuotes()
 }
